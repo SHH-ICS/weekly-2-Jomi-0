@@ -1,21 +1,51 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['radius']) && is_numeric($_POST['radius'])) {
-  $radius = floatval($_POST['radius']);
-  $area = pi() * $radius * $radius;
-  $circumference = 2 * pi() * $radius;
+<!DOCTYPE html>
+<html lang="en">
 
-  echo "<div style='text-align: center; margin-top: 50px;'>";
-  echo "<h1>Circle Results</h1>";
-  echo "<p>Radius: $radius units</p>";
-  echo "<p>Area: " . number_format($area, 2) . " square units</p>";
-  echo "<p>Circumference: " . number_format($circumference, 2) . " units</p>";
-  echo "</div>";
-} else {
-  echo "<div style='text-align: center; margin-top: 50px;'>";
-  echo "<h1>Invalid Input</h1>";
-  echo "<p>Please enter a valid numeric radius.</p>";
-  echo "</div>";
-}
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <title>Circle Calculator</title>
+</head>
+
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">Circle Calculator</span>
+        <div class="mdl-layout-spacer"></div>
+      </div>
+    </header>
+    <main class="mdl-layout__content">
+      <div class="page-content" style="text-align: center; margin-top: 50px;">
+        <form action="" method="POST">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="number" id="radius" name="radius" required>
+            <label class="mdl-textfield__label" for="radius">Enter Radius</label>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
+            Calculate
+          </button>
+        </form>
+
+        <?php
+        if (isset($_POST['radius']) && is_numeric($_POST['radius'])) {
+          $radius = floatval($_POST['radius']);
+          $area = round(pi() * $radius * $radius, 2);
+          $circumference = round(2 * pi() * $radius, 2);
+          echo "<p>Area: $area square units</p>";
+          echo "<p>Circumference: $circumference units</p>";
+        }
+        ?>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>
