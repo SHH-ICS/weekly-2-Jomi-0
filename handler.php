@@ -14,7 +14,8 @@
 </head>
 
 <body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  
+          <div cl<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title">Circle Calculator</span>
@@ -23,15 +24,7 @@
     </header>
     <main class="mdl-layout__content">
       <div class="page-content" style="text-align: center; margin-top: 50px;">
-        <form action="" method="POST">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="number" id="radius" name="radius" required>
-            <label class="mdl-textfield__label" for="radius">Enter Radius</label>
-          </div>
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
-            Calculate
-          </button>
-        </form>
+
 
         <?php
         if (isset($_POST['radius']) && is_numeric($_POST['radius'])) {
