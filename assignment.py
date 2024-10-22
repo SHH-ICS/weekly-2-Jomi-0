@@ -1,13 +1,17 @@
-import math
+import requests
 
-def circle_calculator():
-    radius = float(input("Enter the radius of the circle: "))
-    area = round(math.pi * radius * radius, 2)
-    circumference = round(2 * math.pi * radius, 2)
-    
-    print(f"Area: {area} square units")
-    print(f"Circumference: {circumference} units")
+# Define the URL to your PHP script
+url = 'http://localhost:8000/handler.php'  # Adjust if necessary
 
-if __name__ == "__main__":
-    circle_calculator()
+# Get radius input from the user
+radius = input("Enter the radius: ")
+Import "requests" could not be resolved from sourcePylancereportMissingModuleSource
+# Prepare data to send in the POST request
+data = {'radius': radius}
 
+# Send POST request to the PHP script
+response = requests.post(url, data=data)
+
+# Print the response from the PHP script
+print("Response from PHP:")
+print(response.text)
