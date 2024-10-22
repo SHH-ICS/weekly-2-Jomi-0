@@ -1,17 +1,20 @@
-import requests
+import sys
+import math
 
-# Define the URL to your PHP script
-url = 'http://localhost:8000/handler.php'  # Adjust if necessary
+def calculate_area(radius):
+    return math.pi * float(radius) ** 2
 
-# Get radius input from the user
-radius = input("Enter the radius: ")
-Import "requests" could not be resolved from sourcePylancereportMissingModuleSource
-# Prepare data to send in the POST request
-data = {'radius': radius}
+def calculate_circumference(radius):
+    return 2 * math.pi * float(radius)
 
-# Send POST request to the PHP script
-response = requests.post(url, data=data)
+if __name__ == "__main__":
+    radius = sys.argv[1]
+    calc_type = sys.argv[2]
 
-# Print the response from the PHP script
-print("Response from PHP:")
-print(response.text)
+    if calc_type == 'area':
+        result = calculate_area(radius)
+    elif calc_type == 'circumference':
+        result = calculate_circumference(radius)
+    
+    print(result)
+
